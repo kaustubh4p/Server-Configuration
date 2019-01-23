@@ -1,0 +1,107 @@
+1)	WildFly is a new name of JBoss application server starting from version 8 (WildFly is a community project)
+2)	If you are looking for enterprise support with additional features, then you need Red Hat JBoss Enterprise Application Platform (also known as JBoss EAP)
+
+What is the directory structure in JBoss?
+
+-	modules
+-	bundles
+-	domain
+-	standalone	(configuration,deployments,lib,tmp) standalone.xml is the main configuration file
+-	appclient
+-	bin
+-	docs
+-	welcome-content
+
+What are the logging levels available?
+
+-	FATAL
+-	ERROR
+-	WARN
+-	INFO
+-	DEBUG
+
+Which component is responsible for handling clustering?
+JBoss clustering is on top of JGroups toolkit which helps to create, delete, membership detection, notification, etc. in the cluster
+
+How to install JBoss on Linux server
+unzip jboss-as-7.1.1.Final.zip
+
+What’s the default port to access Administration Console in JBoss 7
+http://server1:9990/admin-console
+
+What must be done to access Admin Console?
+The user must be created under “ManagementRealm” to have console operational. To create the user, you can go to bin folder and execute add-user.sh script.
+
+How to start JBoss in standalone mode?
+./standalone.sh
+
+How to increase Java Heap Memory in JBoss 7?
+Go to bin folder --> standalone.conf 
+“JAVA_OPTS=”
+
+Xms – specify the minimum heap size
+Xmx – specify the maximum heap size
+
+What is the difference between standalone and domain mode
+
+Standalone mode is single JVM process where every JBoss server has its configuration. If you just need one JVM or development environment, then standalone would be perfect.
+Domain mode may have multiple servers where all configuration is managed centralized and often used in production environment
+
+Can you create a cluster in standalone mode
+Yes, clustering is possible in standalone mode. However, an application must be deployed on each server/JVM in standalone mode.
+
+What are the file types you can deploy in JBoss?
+
+WAR – Web application archive
+SAR – Service archive
+JAR – Java Archive
+EAR – Enterprise application archive
+
+How can you deploy an application
+
+Admin Console – you can deploy the necessary application files through the administration console.
+Auto-deploy – leverage file system deployment scanner to auto deploy files from deployments folder.
+Automation – use automation tool/ant/scripting to deploy an application.
+
+What does mgmt-user.properties contain
+All admin console users and password (encrypted) are stored in mgmt.-user.properties file.
+
+What are the important types available for marker file deployment
+.dodeploy – instruct to deploy
+.deployed – indicate the file is deployed
+.pending – deployment is still pending
+.undeployed – confirmation that application is undeployed
+.failed – deployment is failed for some reason
+.skipdeploy – instruct JBoss to ignore the files for auto-deployment
+
+
+Can you bind the HTTP Port of the Web server on a custom value, without changing the whole server's port offset?
+./bin/standalone.sh -Djboss.http.port=9080
+
+What is the difference between validate-on-match and background-validation? can you use  both of them ?
+
+When the validate-on-match option is set to true, the database connection is validated every time it is checked out from the connection pool using the validation mechanism specified in the next step.
+On the other hand, background-validation fires a background validation as dictated by the background-validation-millis.
+
+You cannot apply both of them, they are mutually exclusive.
+
+
+JPA is a standard Java EE specification, meaning there is no implementation
+You can think of JPA as the abstract guidelines that must be followed or an interface, while Hibernate's JPA implementation is code that meets the API as defined by the JPA specification and provides the under the hood functionality
+
+When you use straight Hibernate you are locking into the implementation because other ORMs may use different methods/configurations and annotations, therefore you cannot just switch over to another ORM
+
+On the other hand, the benefit of using Hibernate directly is that you can have access to API or functionalities which are still not available in JPA
+
+
+
+JBOSS																Tomcat
+J2EE Server embedding Tomcat.								Servlet Container.
+Used to host J2EE applications(Beans).						Used to host webpages(JSP and servlet).
+Enables complete Java accessable  features.					Cannot access full JEE Stack.
+Clustering feature is better than Tomcat					Limited clustering.
+Can handle large enterprises as well.						Light weight process used for small and medium  enterprises.
+Can easily manage server and configuration.					Can handle deployment of micro-services easily.
+Can execute standalone and domain.							Can integrate with Apache HTTP server with jk_mod.
+
+jboss-build.xml file
