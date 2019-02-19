@@ -1,0 +1,147 @@
+What is Tomcat
+
+Tomcat is a Java Servlet container and web server from the Jakarta project of the Apache software foundation.
+• A web server responds with web pages to requests from client browsers.
+• Web servers can provide dynamic content based on the requests sent by the user.
+• Tomcat is very good at this because it provides both Java servlet and JavaServerPages (JSP) technologies.
+• Tomcat can also be used as a web server for many applications even if free servlet and JSP engine is wanted.
+• It can be used standalone or used behind traditional web servers such as Apache httpd, with the traditional server serving static pages and Tomcat serving dynamic servlet and JSP requests.
+
+Difference between apache and apache-tomcat server?
+
+Apache:
+Apache mostly serves static content by itself, but there are many add-on modules (some of which come with Apache itself) that let it modify the content and also serve dynamic content written in Perl, PHP, Python, Ruby, or other languages.
+Basically Apache is an HTTP Server, serving HTTP. 
+
+Tomcat is primarily a servlet/JSP container. Its written in Java. It can serve static content too, but its main purpose is to host servlets and JSPs.
+JSP files (which are similar to PHP, and older ASP files) are generated into Java code (HttpServlet), which is then compiled to .class files by the server and executed by the Java virtual machine.
+Apache Tomcat is used to deploy your Java Servlets and JSPs. So in your Java project you can build your WAR (short for Web ARchive) file, and just drop it in the deploy directory in Tomcat.
+Although it is possible to get Tomcat to run Perl scripts and the like, you wouldn’t use Tomcat unless most of your content was Java.
+Tomcat is a Servlet and JSP Server serving Java technologies
+
+What are the directories under the apache-tomcat installation dir?
+
+conf – Server configuration files (including server.xml)
+logs – Log and output files
+shared – For classes and resources that must be shared across all web applications
+webapps – Automatically loaded web applications
+work – Temporary working directories for web applications
+temp – Directory used by the JVM for temporary files (java.io.tmpdir)
+
+How to know your Apache tomcat version?
+
+/usr/share/tomcat7/bin/version.sh
+
+Where can be set roles,username and password?
+/conf/tomcat-users.xml
+
+What Is Default Session Time Out In Tomcat?
+The default session timeout 30 minutes in tomcat and can change in $TOMCAT_HOME/conf/web.xml via modify below entry.
+
+what are the configuratiopn file in tomcat server?
+server.xml(TOMCAT-HOME/conf/server.xml)
+context.xml(TOMCAT-HOME/conf/context.xml)
+web.xml (TOMCAT-HOME/conf/web.xml)
+tomcat-users.xml (TOMCAT-HOME/conf/tomcat-users.xml)
+
+How to change the default(8080) port number?
+
+Go to tomcat>conf folder.
+Edit server.xml. (/usr/share/tomcat/conf/server.xml)
+Search “Connector port”
+Replace “8080” by your port number.
+Restart tomcat server.
+
+
+How to start and shutdown to tomcat server?
+./startup.sh
+./shutdown.sh
+
+How do you define welcome file list?
+
+index.html
+index.htm
+index.jsp
+
+what is a difference between Apache and Nginx web server ?
+
+Both are categorized as a Web Server and here are some of the main differences.
+
+Can Tomcat use SSL ?
+
+Yes, you need to make additional configurations to make Tomcat use SSL. In resume you need to do these tasks
+
+Generate Keystore
+Add a conector in server.xml
+Restart Tomcat
+
+How to deploy War web applications in Tomcat ?
+You can drop the WAR file inside the webapps folder or use the Tomcat manager to deploy War files.
+
+What is the server server.xml configuration file ?
+The server.xml file is Tomcat main configuration file, and it is responsible for specifying Tomcat configuration on startup
+
+What is the server ?
+A Server element represents the entire Catalina servlet container. Therefore, it must be the single outermost element in the conf/server.xml configuration file. Its attributes represent the characteristics of the servlet container as a whole.
+
+What is a connector and why it is used in Tomcat ?
+
+The Apache Tomcat Connectors project is a part of the Tomcat project and provides web server plug-ins to connect web servers with Tomcat and other back-ends.
+The supported web servers are:
+The Apache HTTP Server with a plugin named mod_jk.
+
+What is the servlet container life cycle ?
+
+The servlet receives a request from a client through one of its connectors then is initialized by calling the init() method.
+The servlet calls service() method to process a client’s request and send the response.
+The servlet is terminated by calling the destroy() method.
+The servlet is garbage collected by the garbage collector of the JVM.
+
+What is a servlet container
+
+The servlet container is the component of a web server that interacts with Java servlets. The servlet container is responsible for managing the lifecycle of servlets, mapping a URL to a particular servlet and ensuring that the URL requester has the correct access-rights.
+
+The servlet container handles requests to servlets, JavaServer Pages (JSP) files, and other types of files that include server-side code. The Web container creates servlet instances, loads and unloads servlets, creates and manages request and response objects, and performs other servlet-management tasks.
+
+The servlet container implements the web component contract of the Java EE architecture, specifying a runtime environment for web components that includes security, concurrency, lifecycle management, transaction, deployment, and other services. 
+
+What is the Connector ?
+A Connector represents an end point in which requests are received.
+
+What is the difference between Tomcat and an Application server ?
+ 
+Tomcat is a servlet container that supports servlets and the JSP technology. An Application server supports many other Java EE technologies. company
+
+What servicesa are provided by Tomcat ?
+
+Servlet Life cycle
+Handle Web Requests
+Database connection pooling
+Clustering
+High availability
+
+Name some Tomcat features
+
+Tomcat 7.x implements the Servlet 3.0 and JSP 2.2 specifications. It requires Java version 1.6.
+Tomcat 8.x implements the Servlet 3.1 and JSP 2.4 Specifications. 
+Tomcat 8.5.x is intended to replace 8.0.x and includes new features pulled forward from Tomcat 9.0.x. 
+Tomcat 8.5 is designed to run on Java SE 7 and later.
+
+
+Where do you configure a database connection pool in Tomcat server?
+The Configure pool is in the context.xml inside the conf folder of tomcat.
+
+
+What is TomEE?
+Java Enterprise Edition of Apache Tomcat (Tomcat + Java EE = TomEE)
+
+What is a Tomcat cluster?
+This component is used to manage large applications. It is used for load balancing and can be achieved through many techniques. Apache Tomcat cluster is used to manage more traffic. It provides multiples instances of the Tomcat server with its content balanced between these instances.
+
+
+
+https://svrtechnologies.com/interview-question-answers/best-56-apache-tomcat-interview-questions
+https://www.softwaretestinghelp.com/apache-tomcat-interview-questions/
+https://examples.javacodegeeks.com/enterprise-java/tomcat/apache-tomcat-interview-questions-answers/
+https://geekflare.com/apache-interview-questions-answers/
+https://svrtechnologies.com/interview-question-answers/top-44-tomcat-interview-questions-and-answers
